@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+  text-align: center;
+}
+
+code {
+  background: #d0d0d5;
+}
+
+canvas {
+  margin: auto;
+  background-color: beige;
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px 2px black;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+#messages {
+  width: 640px;
+  height: 100px;
+  margin: auto; 
+  margin-top: 20px;
+  text-align: left;
+  padding: 5px 20px 5px 20px;
+  background-color: lightgreen;
+  color: darkgreen;
+  border-radius: 10px;
+  border: inset 2px black;
+  font-family:'Courier New', Courier, monospace;
+  font-size: .7rem;
+  overflow-y: auto;
+  box-shadow: 5px 5px 20px 2px black;
+}
+
+@media (min-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+}
