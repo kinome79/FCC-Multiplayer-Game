@@ -21,6 +21,7 @@ app.use( (req,res,next) => {
   next();
 });
 
+// set XSS protection to block (newer version of helmet sets it to 0 which doesn't pass the test)
 app.use((req, res, next) => {
   res.setHeader("X-XSS-Protection", "1; mode=block");
   next();

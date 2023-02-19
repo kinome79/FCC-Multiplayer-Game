@@ -2,12 +2,8 @@
 //-possibly implement additional graphics on selecting coin or just coin shine
 //-possibly implement stealing projectiles
 //-use firer on a projectile to assign score to firing tank possibly
-//-still need to solve graphic text on initial load
 //-detect how many people are on the server and sync list
 //-maybe need to update with only update, not adjusting locally
-//-after adding rot to the player.moving update, now bullets freeze after fired sometimes.
-
-
 
 // import game modules
 import Player from './Player.mjs';
@@ -32,6 +28,11 @@ const canvas = document.getElementById('game-window');
 canvas.width = width;
 canvas.height = height;
 const context = canvas.getContext('2d');
+document.fonts.ready.then( () => {
+    context.font = "24px 'Press Start 2P'";
+    context.fillStyle = 'black';
+    context.fillText ("Loading ... ", 300, 252);
+});
 
 // get the log html element
 const messageList = document.getElementById("message-list");
@@ -187,9 +188,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Projectile Update - indicates change in projectile location/status - update accordingly and redraw
     socket.on ('Projectile Update', function(proj) {
-        for (let key in proj) {
-            projectile[key] = proj[key];
-            changed = true;
+        if (!myPlayer.carrying) {
+            for (let key in proj) {
+                projectile[key] = proj[key];
+                changed = true;
+            }
         }
     });
 
